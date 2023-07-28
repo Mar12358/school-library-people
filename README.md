@@ -59,6 +59,7 @@
 
 - **Def Classes**
 - **Methods inside classes**
+- **Decorate a class**
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -170,7 +171,6 @@ Example:
 ## 🔭 Future Features <a name="future-features"></a>
 
 
-- [ ] **Decorate a class**
 - [ ] **Set up associations**
 - [ ] **Add basic UI**
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
