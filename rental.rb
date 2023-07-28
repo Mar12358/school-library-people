@@ -1,6 +1,8 @@
 class Rental
-  def initialize(date)
+  def initialize(date, book = nil, person = nil)
     @date = date
+    self.book = book if book
+    self.person = person if person
   end
 
   attr_accessor :date
