@@ -6,6 +6,7 @@ class Person < Nameable
     @id = Random.rand(1..1000)
     @name = name
     @age = age
+    @rentals = []
   end
 
   attr_reader :id
@@ -25,5 +26,10 @@ class Person < Nameable
 
   def correct_name
     name
+  end
+
+  def add_rental(rental)
+    @rentals << rental
+    rental.person = self
   end
 end
