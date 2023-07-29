@@ -22,7 +22,7 @@ class App
   end
 
   def create_student(age, name, permission)
-    @people << Student.new(@classroom, age, name, permission) # Use @classroom instead of classroom:
+    @people << Student.new(@classroom, age, permission, name)
     puts "Student #{name} created successfully!"
   end
 
@@ -65,7 +65,7 @@ class App
 
     if person && book
       rental = Rental.new('2023-07-26', book, person)
-      person.add_rental(rental, book)
+      person.add_rental(rental)
       book.add_rental(rental)
       @rentals << rental
       puts 'Rental created successfully!'
