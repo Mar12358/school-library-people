@@ -1,4 +1,4 @@
-class Book
+2class Book
   def initialize(title, author)
     @title = title
     @author = author
