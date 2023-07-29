@@ -1,17 +1,18 @@
 require './nameable'
 
 class Person < Nameable
-  def initialize(role, age, name = 'Unknown', _parent_permission = true)
+  def initialize(role, age, name = 'Unknown', parent_permission: true)
     super()
     @id = Random.rand(1..1000)
     @name = name
     @age = age.to_i
     @rentals = []
+    @parent_permission = parent_permission
     @role = role
   end
 
-  attr_reader :id
-  attr_accessor :name, :age
+  attr_reader :id, :rentals, :parent_permission
+  attr_accessor :name, :age, :role
 
   private
 
@@ -34,4 +35,4 @@ class Person < Nameable
     rental.person = self
   end
 end
-Person.new('Student', 23, 'Mar', true)
+Person.new('Student', 23, 'Mar')
