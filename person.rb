@@ -1,7 +1,7 @@
 require './nameable'
 
 class Person < Nameable
-  def initialize(role, age, name = 'Unknown', _parent_permission: true)
+  def initialize(role, age, name = 'Unknown', _parent_permission = true)
     super()
     @id = Random.rand(1..1000)
     @name = name
@@ -34,3 +34,4 @@ class Person < Nameable
     rental.person = self
   end
 end
+Person.new('Student', 23, 'Mar', true)

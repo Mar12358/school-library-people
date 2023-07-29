@@ -1,10 +1,11 @@
 require './person'
 
 class Student < Person
-  def initialize(classroom, age, name = 'Unknown', parent_permission: true)
+  def initialize(classroom, age, name = 'Unknown', parent_permission = true)
     super('Student', age, name, parent_permission)
     @classroom = classroom
     classroom.add_student(self)
+    @role = 'Student'
   end
 
   attr_accessor :classroom
