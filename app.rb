@@ -79,7 +79,8 @@ class App
 
   def create_book
     print 'Book Title: '
-    title = gets.chomp
+    gets.chomp
+    title = 'Star Wars'
     print 'Book Author: '
     author = gets.chomp
     @books << Book.new(title, author)
