@@ -4,6 +4,7 @@ require './book'
 require './student'
 require './rental'
 require './teacher'
+require 'date'
 
 class App
   def initialize
@@ -55,19 +56,21 @@ class App
 
   def create_rental
     puts 'Select person from the following list by number (not id)'
-    @people.each_with_index { |person, index| puts "#{index}) #{person.role} - #{person.name}" }
-    person_choice = gets.chomp.to_i
-    person = @people[person_choice]
+    @people.each_with_index do |person, index|
+      puts "#{index}) [#{person.role}] Name: #{person.name}, ID: #{person.id}, Age: #{person.age}"
+    end
+    person = @people[gets.chomp.to_i]
     puts 'Select book from the following list by number (not id)'
-    @books.each_with_index { |book, index| puts "#{index}) #{book.title} by #{book.author}" }
-    book_choice = gets.chomp.to_i
-    book = @books[book_choice]
+    @books.each_with_index { |book, index| puts "#{index}) Title: \"#{book.title}\", Author: #{book.author}" }
+    book = @books[gets.chomp.to_i]
 
     if person && book
-      rental = Rental.new('2023-07-26', book, person)
+      current_date = Date.today
+      rental = Rental.new(current_date.to_s, book, person)
       person.add_rental(rental)
       book.add_rental(rental)
       @rentals << rental
+      puts "Date: #{current_date}"
       puts 'Rental created successfully!'
     else
       puts 'Person or book not found. Please check the IDs and titles and try again.'
@@ -86,14 +89,11 @@ class App
   def list_rentals
     puts 'Enter person ID:'
     person_id = gets.chomp.to_i
-    person = @people.find { |p| p.id == person_id }
-    if person
-      puts "Rentals for #{person.name}:"
-      person.rentals.each do |rental|
-        puts "#{rental.book.title} (#{rental.date})"
+
+    @rentals.each do |rental|
+      if rental.person.id == person_id
+        puts "Date: #{rental.date}, Book \"#{rental.book.title}\" by #{rental.book.author}"
       end
-    else
-      puts 'Person not found. Please check the ID and try again.'
     end
   end
 end
