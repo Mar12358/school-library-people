@@ -14,11 +14,11 @@ class App
   end
 
   def list_books
-    @books.each { |book| puts "#{book.title} by #{book.author}" }
+    @books.each { |book| puts "Title: \"#{book.title}\", Author: #{book.author}" }
   end
 
   def list_people
-    @people.each { |person| puts "#{person.role} - #{person.name}" }
+    @people.each { |person| puts "[#{person.role}] Name: #{person.name}, ID: #{person.id}, Age: #{person.age}" }
   end
 
   def create_student(age, name, permission)
